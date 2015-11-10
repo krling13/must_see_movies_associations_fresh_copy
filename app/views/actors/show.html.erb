@@ -18,6 +18,14 @@
       <dt>Bio</dt>
       <dd><%= @actor.bio %></dd>
 
+      <dt>Character Count</dt>
+      <dd><%= Casting.where({:actor_id => @actor.id }).count %></dd>
+
+      <dt>Characters</dt>
+      <% Casting.where({:actor_id => @actor.id }).each do |char| %>
+        <dd><%= char.name %></dd>
+      <%end%>
+
     </dl>
 
     <div class="btn-group btn-group-justified">

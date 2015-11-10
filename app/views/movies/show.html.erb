@@ -18,6 +18,12 @@
       <dd><%= @movie.description %></dd>
       <dt>Director</dt>
       <dd><%= Director.find_by({:id=>@movie.director_id}).name %></dd>
+      <dt>Character Count</dt>
+      <dd><%= Casting.where({:movie_id => @movie.id }).count %></dd>
+      <dt>Characters</dt>
+      <% Casting.where({:movie_id => @movie.id }).each do |char| %>
+        <dd><%= char.name %></dd>
+      <%end%>
       <dt>Image</dt>
       <dd><img src="<%= @movie.image_url %>"></dd>
     </dl>
